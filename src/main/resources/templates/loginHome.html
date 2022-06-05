@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boards}">
+                <td th:text="${board.id}"></td>
+                <td><a th:href="'/board/view/'+${board.id}" th:text="${board.title}"></a></td>
+                <td th:text="${board.name}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+    <p>
+        <a class="btn btn-primary" href="/write/new">글쓰기</a>
+    </p>
+    <tbody>
+    <tr th:each="board : ${member}">
+        <th>이름: </th>
+        <td th:text="${member.name}"></td>
+    </tr>
+    </tbody>
+    <p>
+    <form th:action="@{/logout}" method="post">
+        <button class="w-100 btn btn-dark btn-lg" type="submit">
+            로그아웃
+        </button>
+    </form>
+    </p>
+</div> <!-- /container -->
+</body>
+</html>

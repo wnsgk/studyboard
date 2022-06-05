@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <th>글 읽기</th>
+            </thead>
+            <tbody>
+            <tr>
+                <th>제목</th>
+                <td th:text="${board.title}"></td>
+            </tr>
+            <tr>
+                <th>본문 내용</th>
+                <td th:text="${board.body}"></td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td th:text="${board.name}"></td>
+            </tr>
+            <tr>
+                <td><a th:href="'/board/view/'+${board.id}+'/edit'">수정</a></td>
+                <td><a th:href="'/board/view/'+${board.id}+'/delete'">삭제</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>
